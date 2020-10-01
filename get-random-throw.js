@@ -1,4 +1,4 @@
-export function randomThrow () {
+export function randomThrow() {
     const thrown = Math.ceil(Math.random() * 3);
     if (thrown === 1) {
         return 'rock';
@@ -12,26 +12,31 @@ export function randomThrow () {
 
 }
 
+const resultSpan = document.getElementById('round-results');
+
 export function doesUserWin(userThrow, computerThrow) {
-    if (userThrow === computerThrow) {
-        return 'draw';
-    }
-    if (userThrow === 'rock' && computerThrow === 'paper') {
-        return 'lose';
-    }
     if (userThrow === 'rock' && computerThrow === 'scissors') {
-        return 'win';
+        resultSpan.textContent = 'Rock beats Scissors!';
+        return true;
+    } else if (userThrow === 'paper' && computerThrow === 'rock') {
+        resultSpan.textContent = 'Paper covers Rock!';
+        return true;
+    } else if (userThrow === 'scissors' && computerThrow === 'paper') {
+        resultSpan.textContent = 'Scissors cuts Paper!';
+        return true;
     }
-    if (userThrow === 'paper' && computerThrow === 'scissors') {
-        return 'lose';
+}
+
+export function doesUserLose(computerThrow, userThrow) {
+    if (computerThrow === 'rock' && userThrow === 'scissors') {
+        resultSpan.textContent = 'Rock beats Scissors!';
+    } else if (computerThrow === 'paper' && userThrow === 'rock') {
+        resultSpan.textContent = 'Paper covers Rock!';
+    } else if (computerThrow === 'scissors' && userThrow === 'paper') {
+        resultSpan.textContent = 'Scissors cuts Paper!';
     }
-    if (userThrow === 'paper' && computerThrow === 'rock') {
-        return 'win';
-    }
-    if (userThrow === 'scissors' && computerThrow === 'rock') {
-        return 'lose';
-    }
-    if (userThrow === 'scissors' && computerThrow === 'paper') {
-        return 'win';
-    }
+}
+
+export function displayDraw() {
+    resultSpan.textContent = 'Draw!';
 }
