@@ -47,11 +47,11 @@ ON CLICK:
 
 
 POSSIBLE OUTCOMES:
-    - userThrow === computerThrow: DRAW
-    - Player chooses rock, computer chooses paper: LOSE
-    - Player chooses rock, computer chooses scissors: WIN
-    - Player chooses paper, computer chooses scissors: LOSE
-    - Player chooses paper, computer chooses rock: WIN
-    - Player chooses scissors, computer chooses rock: LOSE
-    - Player chooses scissors, computer chooses paper: WIN
+- userThrow === computerThrow: DRAW
+- Player chooses rock, computer chooses paper: LOSE
+- Player chooses rock, computer chooses scissors: WIN
+- Player chooses paper, computer chooses scissors: LOSE
+- Player chooses paper, computer chooses rock: WIN
+- Player chooses scissors, computer chooses rock: LOSE
+- Player chooses scissors, computer chooses paper: WIN
 
