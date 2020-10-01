@@ -9,6 +9,7 @@ const totalSpan = document.getElementById('total-span');
 const resetButton = document.getElementById('reset-button');
 const resetSpan = document.getElementById('reset-count');
 
+
 // initialize state
 let wins = 0;
 let draws = 0;
@@ -44,6 +45,7 @@ playButton.addEventListener('click', () => {
         lossSpan.textContent = losses;
         totalSpan.textContent = total;
     }
+
 
 }); 
 
