@@ -1,19 +1,21 @@
 // import functions and grab DOM elements
-import { randomThrow, doesUserWin } from './get-random-throw.js';
+import { randomThrow, doesUserWin, doesUserLose, displayDraw } from './get-random-throw.js';
 
 const playButton = document.getElementById('play-button');
-const resultSpan = document.getElementById('round-results');
 const winSpan = document.getElementById('win-span');
 const drawSpan = document.getElementById('draw-span');
 const lossSpan = document.getElementById('loss-span');
 const totalSpan = document.getElementById('total-span');
 const resetButton = document.getElementById('reset-button');
+const resetSpan = document.getElementById('reset-count');
+
 
 // initialize state
 let wins = 0;
 let draws = 0;
 let losses = 0;
 let total = 0;
+let resets = 0;
 
 // set event listeners to update state and DOM
 playButton.addEventListener('click', () => {
@@ -23,78 +25,42 @@ playButton.addEventListener('click', () => {
     const checkedRadioButton = document.querySelector(':checked');
     const userThrow = checkedRadioButton.value;
 
-    if (userThrow === computerThrow) {
+    if (computerThrow === userThrow) {
+        displayDraw();
         draws++;
 
-        return resultSpan.textContent = 'Draw!',
-        winSpan.textContent = wins,
-        drawSpan.textContent = draws,
-        lossSpan.textContent = losses,
+        drawSpan.textContent = draws;
         totalSpan.textContent = total;
-    }
-
-    if (userThrow === 'rock' && computerThrow === 'paper') {
-        losses++;
-
-        return resultSpan.textContent = 'Lose! Paper beats rock.',
-        winSpan.textContent = wins,
-        drawSpan.textContent = draws,
-        lossSpan.textContent = losses,
-        totalSpan.textContent = total;
-    }
-
-    if (userThrow === 'rock' && computerThrow === 'scissors') {
+        
+    } else if (doesUserWin(userThrow, computerThrow)) {
         wins++;
 
-        return resultSpan.textContent = `Win! Rock beats scissors.`,
-        winSpan.textContent = wins,
-        drawSpan.textContent = draws,
-        lossSpan.textContent = losses,
+        winSpan.textContent = wins;
         totalSpan.textContent = total;
-    }
 
-    if (userThrow === 'paper' && computerThrow === 'scissors') {
+    } else if (!doesUserWin(userThrow, computerThrow)) {
+        doesUserLose(computerThrow, userThrow);
         losses++;
 
-        return resultSpan.textContent = 'Lose! Scissors beat paper.',
-        winSpan.textContent = wins,
-        drawSpan.textContent = draws,
-        lossSpan.textContent = losses,
+        lossSpan.textContent = losses;
         totalSpan.textContent = total;
     }
 
-    if (userThrow === 'paper' && computerThrow === 'rock') {
-        wins++;
-
-        return resultSpan.textContent = 'Win! Paper beats rock.',
-        winSpan.textContent = wins,
-        drawSpan.textContent = draws,
-        lossSpan.textContent = losses,
-        totalSpan.textContent = total;
-    }
-
-    if (userThrow === 'scissors' && computerThrow === 'rock') {
-        losses++;
-
-        return resultSpan.textContent = 'Lose! Rock beats scissors.',
-        winSpan.textContent = wins,
-        drawSpan.textContent = draws,
-        lossSpan.textContent = losses,
-        totalSpan.textContent = total;
-    }
-
-    if (userThrow === 'scissors' && computerThrow === 'paper') {
-        wins++;
-
-        return resultSpan.textContent = 'Win! Scissors beat paper.',
-        winSpan.textContent = wins,
-        drawSpan.textContent = draws,
-        lossSpan.textContent = losses,
-        totalSpan.textContent = total;
-    }
 
 }); 
 
+
 resetButton.addEventListener('click', () => {
-    document.location.reload();
+    resets++;
+    resetSpan.textContent = resets;
+
+    wins = 0;
+    draws = 0;
+    losses = 0;
+    total = 0;
+
+    winSpan.textContent = wins;
+    drawSpan.textContent = draws;
+    lossSpan.textContent = losses;
+    totalSpan.textContent = total;
 });

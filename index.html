@@ -25,33 +25,47 @@
         </section>
         <section class="game">
             <label>
-                <input type="radio" name="choices" value="rock"  checked /><img src="https://media1.popsugar-assets.com/files/thumbor/fQV14blXlEh5-GohuhnAudI7TG8/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-:watermark-!popsugar-watermark_2x.png,-5,-5,0!-/2017/05/24/652/n/1922398/11ba884859259b36435d63.10345825_edit_img_image_16360412_1495635996/i/Dwayne-Johnson-Posing-Rock-Photos.jpg" height="235px"> Rock
+                <input 
+                type="radio" 
+                name="choices" 
+                value="rock"  
+                checked />
+                <img src="https://media1.popsugar-assets.com/files/thumbor/fQV14blXlEh5-GohuhnAudI7TG8/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-:watermark-!popsugar-watermark_2x.png,-5,-5,0!-/2017/05/24/652/n/1922398/11ba884859259b36435d63.10345825_edit_img_image_16360412_1495635996/i/Dwayne-Johnson-Posing-Rock-Photos.jpg" height="235px">
             </label>
             <label>
-                <input type="radio" name="choices" value="paper"  checked /><img src="https://www.cchsvoice.org/wp-content/uploads/2019/05/THW.png" height="175px"> Paper
+                <input 
+                type="radio" 
+                name="choices" 
+                value="paper"/>
+                <img src="https://www.cchsvoice.org/wp-content/uploads/2019/05/THW.png" height="175px"> 
             </label>
             <label>
-                <input type="radio" name="choices" value="scissors"  checked /><img src="https://i.imgflip.com/2r9eab.jpg" height="175px"> Scissors
+                <input 
+                type="radio" 
+                name="choices" 
+                value="scissors"/>
+                <img src="https://i.imgflip.com/2r9eab.jpg" height="175px"> 
             </label>
+        </section>
+        <section>
             <button id="play-button">Play!</button>
             <button id="reset-button">Reset</button>
             <section class='results'>
+                <span id="computer-throw"></span><br>
                 <span id="round-results"></span><br>
                 <span>Wins:</span>
-                <span id="win-span"> </span><br>
+                <span id="win-span">0</span><br>
                 <span>Draws:</span>
-                <span id="draw-span"> </span><br>
+                <span id="draw-span">0</span><br>
                 <span>Losses:</span>
-                <span id="loss-span"> </span><br>
+                <span id="loss-span">0</span><br>
                 <span>Total Attempts:</span>
-                <span id="total-span"> </span><br>
+                <span id="total-span">0</span><br>
+                <span>Number of Game Resets:</span>
+                <span id="reset-count">0</span><br>
             </section>
         </section>
-
     </main>
-
-
     <script type="module" src="app.js"></script>
 </body>
-
 </html>

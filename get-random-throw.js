@@ -1,4 +1,4 @@
-export function randomThrow () {
+export function randomThrow() {
     const thrown = Math.ceil(Math.random() * 3);
     if (thrown === 1) {
         return 'rock';
@@ -12,26 +12,38 @@ export function randomThrow () {
 
 }
 
+const resultSpan = document.getElementById('round-results');
+const compThrow = document.getElementById('computer-throw');
+
 export function doesUserWin(userThrow, computerThrow) {
-    if (userThrow === computerThrow) {
-        return 'draw';
-    }
-    if (userThrow === 'rock' && computerThrow === 'paper') {
-        return 'lose';
-    }
     if (userThrow === 'rock' && computerThrow === 'scissors') {
-        return 'win';
+        resultSpan.textContent = 'Rock beats Scissors!';
+        compThrow.textContent = 'Computer throws Scissors!';
+        return true;
+    } else if (userThrow === 'paper' && computerThrow === 'rock') {
+        resultSpan.textContent = 'Paper covers Rock!';
+        compThrow.textContent = 'Computer throws Rock!';
+        return true;
+    } else if (userThrow === 'scissors' && computerThrow === 'paper') {
+        resultSpan.textContent = 'Scissors cuts Paper!';
+        compThrow.textContent = 'Computer throws Paper!';
+        return true;
     }
-    if (userThrow === 'paper' && computerThrow === 'scissors') {
-        return 'lose';
+}
+
+export function doesUserLose(computerThrow, userThrow) {
+    if (computerThrow === 'rock' && userThrow === 'scissors') {
+        resultSpan.textContent = 'Rock beats Scissors!';
+        compThrow.textContent = 'Computer throws Rock!';
+    } else if (computerThrow === 'paper' && userThrow === 'rock') {
+        resultSpan.textContent = 'Paper covers Rock!';
+        compThrow.textContent = 'Computer throws Paper!';
+    } else if (computerThrow === 'scissors' && userThrow === 'paper') {
+        resultSpan.textContent = 'Scissors cuts Paper!';
+        compThrow.textContent = 'Computer throws Scissors!';
     }
-    if (userThrow === 'paper' && computerThrow === 'rock') {
-        return 'win';
-    }
-    if (userThrow === 'scissors' && computerThrow === 'rock') {
-        return 'lose';
-    }
-    if (userThrow === 'scissors' && computerThrow === 'paper') {
-        return 'win';
-    }
+}
+
+export function displayDraw() {
+    resultSpan.textContent = 'Draw!';
 }
